@@ -3,6 +3,7 @@ import { SearchForm } from './Components/SearchForm/SearchForm'
 import { Header } from './Components/Header/Header'
 import { UserBio } from './Components/User/UserBio/UserBio'
 import { UserRepos } from './Components/User/UserRepos/UserRepos'
+import unknown from './doge.png'
 import './App.css';
 
 const App = () => {
@@ -11,18 +12,20 @@ const App = () => {
   const [err, setErr] = useState();
 
   const fetchUser = async () => {
-    const searchInput = document.querySelector('#search-form-input').value
+    setErr(null)
+    const searchInput = document.querySelector('#search-form-input')
     if (searchInput !== '') {
-      await fetch(`https://api.github.com/users/${searchInput}`)
+      await fetch(`https://api.github.com/users/${searchInput.value}`)
         .then(async user => {
           user.status !== 404 ?
             setUser(await user.json()) :
-            setErr(user.status)
+            setErr(searchInput.value)
         })
         .catch(err => {
           console.log(err, 'Oops! Something went wrong!');
         })
     }
+    searchInput.value = ''
   }
 
   const fetchRepos = async (e) => {
@@ -54,7 +57,7 @@ const App = () => {
       <Header />
       <section className="App-main">
         {user ? <button className="button" onClick={reset}>New Search</button> : null}
-        {err ? <div className="four-oh-four">No Users Found</div> : null}
+        {err ? <div className="four-oh-four"><img src={unknown} /> <br/><span>No user with name "{err}" was found</span></div> : null}
         {user ? (
           <div className="user-presentation">
             <UserBio user={user} />
