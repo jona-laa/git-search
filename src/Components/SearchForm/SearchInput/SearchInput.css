@@ -1,0 +1,12 @@
+.text-input {
+    background-color: rgb(224, 224, 224);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    padding: 10px;
+    border: none;
+    text-align: center;
+}
+
+.text-input:focus {
+    background-color: rgb(204, 227, 231);
+}

@@ -1,0 +1,20 @@
+.App-header {
+  align-items: center;
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  height: 80px;
+  justify-content: flex-start;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.App-logo {
+  max-height: 50px;
+  margin-right: 10px;
+}
+
+.App-name {
+  font-size: 2.0rem;
+}

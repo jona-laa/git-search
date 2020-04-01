@@ -1,0 +1,32 @@
+.user-git {
+    margin: 0 auto 10px;
+    text-align: center;
+}
+
+.user-image {
+    height: auto;
+    margin: auto;
+    max-width: 400px;
+    width: 100%;
+}
+
+.user-bio {
+    list-style-position: outside;
+    list-style-type: none;
+    padding: 5px;
+}
+
+.user-bio li {
+    list-style-type: none;
+    margin: 2.5px 0;
+}
+
+
+.user-bio span {
+    font-weight: bold;
+}
+
+.user-bio .user-bio-data {
+    float: right;;
+    font-weight: 300;
+}

@@ -1,0 +1,12 @@
+#search-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+}
+
+@media screen and (max-width: 600px) {
+  #search-form{
+      justify-self: center;
+      margin-top: 200px;
+  }
+}

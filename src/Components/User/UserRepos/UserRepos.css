@@ -1,0 +1,20 @@
+summary:hover {
+    cursor: pointer;
+}
+
+details {
+    padding: 0 20px;
+}
+
+.user-repo {
+    padding: 5px;
+}
+
+.user-repo-info li {
+    list-style-type: none;
+    margin: 2.5px 0;
+}
+
+.user-repo-info span {
+    font-weight: bold;
+}
