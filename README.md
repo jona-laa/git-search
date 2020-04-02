@@ -6,4 +6,4 @@ Will run the app on [http://localhost:3000].
 
 ## Usage
 Search for user account and press 'Search'.
-Press 'New Search' to reset, to make a new search.
+Press 'Reset' to reset, or simply make a new search.

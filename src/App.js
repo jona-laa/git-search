@@ -3,23 +3,23 @@ import { SearchForm } from './Components/SearchForm/SearchForm'
 import { Header } from './Components/Header/Header'
 import { UserBio } from './Components/User/UserBio/UserBio'
 import { UserRepos } from './Components/User/UserRepos/UserRepos'
-import unknown from './doge.png'
+import unknownUser from './doge.png'
 import './App.css';
 
 const App = () => {
   const [user, setUser] = useState();
   const [repos, setRepos] = useState();
-  const [err, setErr] = useState();
+  const [unknown, setUnknown] = useState();
 
   const fetchUser = async () => {
-    setErr(null)
+    setUnknown(null)
     const searchInput = document.querySelector('#search-form-input')
     if (searchInput !== '') {
       await fetch(`https://api.github.com/users/${searchInput.value}`)
-        .then(async user => {
-          user.status !== 404 ?
-            setUser(await user.json()) :
-            setErr(searchInput.value)
+        .then(async res => {
+          res.status === 404 ?
+            setUnknown(searchInput.value) :
+            setUser(await res.json())
         })
         .catch(err => {
           console.log(err, 'Oops! Something went wrong!');
@@ -43,7 +43,7 @@ const App = () => {
   const reset = () => {
     setUser(null)
     setRepos(null)
-    setErr(null)
+    setUnknown(null)
   }
 
   const userProps = {
@@ -56,15 +56,21 @@ const App = () => {
     <div className="App">
       <Header />
       <section className="App-main">
-        {user ? <button className="button" onClick={reset}>New Search</button> : null}
-        {err ? <div className="four-oh-four"><img src={unknown} /> <br/><span>No user with name "{err}" was found</span></div> : null}
+        {unknown ?
+          <div className="four-oh-four">
+            <img src={unknownUser} /> <br />
+            <span>No user with name "{unknown}" was found</span>
+          </div> : null
+        }
         {user ? (
           <div className="user-presentation">
             <UserBio user={user} />
             <UserRepos {...userProps} />
-          </div>) : (
-            <SearchForm fetchUser={fetchUser} />
-          )}
+            <button className="button" onClick={reset}>Reset</button>
+          </div>
+          ) : null
+        }
+        <SearchForm fetchUser={fetchUser} />
       </section>
     </div>
   );
