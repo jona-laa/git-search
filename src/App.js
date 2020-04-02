@@ -59,7 +59,7 @@ const App = () => {
         {unknown ?
           <div className="four-oh-four">
             <img src={unknownUser} /> <br />
-            <span>No user with name "{unknown}" was found</span>
+            <span>No user with name &quot;{unknown}&quot; was found</span>
           </div> : null
         }
         {user ? (
