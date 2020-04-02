@@ -28,8 +28,8 @@ const App = () => {
     searchInput.value = ''
   }
 
-  const fetchRepos = async (e) => {
-    if (e.target.id === 'expand-user-repos' && !repos) {
+  const fetchRepos = async () => {
+    if (!repos) {
       await fetch(`https://api.github.com/users/${user.login}/repos`)
         .then(async repos => {
           setRepos(await repos.json())
@@ -49,7 +49,7 @@ const App = () => {
   const userProps = {
     user,
     repos,
-    fetchRepos
+    fetchRepos,
   }
 
   return (
@@ -58,7 +58,7 @@ const App = () => {
       <section className="App-main">
         {unknown ?
           <div className="four-oh-four">
-            <img src={unknownUser} /> <br />
+            <img src={unknownUser} alt="Yes, this is doge. The unknown user." /> <br />
             <span>No user with name &quot;{unknown}&quot; was found</span>
           </div> : null
         }
