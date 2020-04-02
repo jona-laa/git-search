@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import './SearchButton.css'
 
-export const SearchButton = ({ fetchUser }) => {
+export const SearchButton = ({fetchUser}) => {
 
     return (
         <button
@@ -14,3 +15,7 @@ export const SearchButton = ({ fetchUser }) => {
         </button>
     )
 }
+
+SearchButton.propTypes = {
+    fetchUser: PropTypes.func,
+};
