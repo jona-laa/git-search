@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { SearchForm } from './Components/SearchForm/SearchForm'
 import { Header } from './Components/Header/Header'
-import { UserBio } from './Components/User/UserBio/UserBio'
-import { UserRepos } from './Components/User/UserRepos/UserRepos'
-import unknownUser from './doge.png'
-import './App.css';
+import { FourOhFour } from './Components/404/404'
+import { UserPresentation } from './Components/User/UserPresentation'
+import './App.css'
 
 const App = () => {
-  const [user, setUser] = useState();
-  const [repos, setRepos] = useState();
-  const [unknown, setUnknown] = useState();
+  const [user, setUser] = useState()
+  const [repos, setRepos] = useState()
+  const [unknown, setUnknown] = useState()
 
   const fetchUser = async () => {
-    setUnknown(null)
+    reset()
     const searchInput = document.querySelector('#search-form-input')
     if (searchInput !== '') {
       await fetch(`https://api.github.com/users/${searchInput.value}`)
@@ -22,7 +21,7 @@ const App = () => {
             setUser(await res.json())
         })
         .catch(err => {
-          console.log(err, 'Oops! Something went wrong!');
+          console.log(err, 'Oops! Something went wrong!')
         })
     }
     searchInput.value = ''
@@ -35,7 +34,7 @@ const App = () => {
           setRepos(await repos.json())
         })
         .catch(err => {
-          console.log(err, 'Oops! Something went wrong!');
+          console.log(err, 'Oops! Something went wrong!')
         })
     }
   }
@@ -50,6 +49,7 @@ const App = () => {
     user,
     repos,
     fetchRepos,
+    reset
   }
 
   return (
@@ -57,23 +57,16 @@ const App = () => {
       <Header />
       <section className="App-main">
         {unknown ?
-          <div className="four-oh-four">
-            <img src={unknownUser} alt="Yes, this is doge. The unknown user." /> <br />
-            <span>No user with name &quot;{unknown}&quot; was found</span>
-          </div> : null
+          <FourOhFour unknown={unknown} /> : null
         }
         {user ? (
-          <div className="user-presentation">
-            <UserBio user={user} />
-            <UserRepos {...userProps} />
-            <button className="button" onClick={reset}>Reset</button>
-          </div>
-          ) : null
+          <UserPresentation {...userProps} />
+        ) : null
         }
         <SearchForm fetchUser={fetchUser} />
       </section>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

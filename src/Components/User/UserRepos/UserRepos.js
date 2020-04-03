@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import './UserRepos.css'
 
 export const UserRepos = ({ user, repos, fetchRepos }) => {
@@ -31,4 +31,4 @@ UserRepos.propTypes = {
     user: PropTypes.object,
     repos: PropTypes.array,
     fetchRepos: PropTypes.func
-};
+}

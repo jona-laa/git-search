@@ -53,21 +53,3 @@ a:hover {
 li {
   line-height: 1.6rem;
 }
-
-.user-presentation {
-  background-color: rgba(128, 128, 128, 0.5);
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  max-width: 500px;
-  padding: 20px 10px;
-  text-align: start;
-  width: 100%;
-  z-index: 0;
-}
-
-@media screen and (max-width: 600px) {
-  .four-oh-four img {
-    width: 250px;
-  }
-}
