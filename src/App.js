@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { SearchForm } from './Components/SearchForm/SearchForm'
 import { Header } from './Components/Header/Header'
-import { UserBio } from './Components/User/UserBio/UserBio'
-import { UserRepos } from './Components/User/UserRepos/UserRepos'
-import unknownUser from './doge.png'
+import { FourOhFour } from './Components/404/404'
+import { UserPresentation } from './Components/User/UserPresentation'
 import './App.css';
 
 const App = () => {
@@ -12,7 +11,7 @@ const App = () => {
   const [unknown, setUnknown] = useState();
 
   const fetchUser = async () => {
-    setUnknown(null)
+    reset()
     const searchInput = document.querySelector('#search-form-input')
     if (searchInput !== '') {
       await fetch(`https://api.github.com/users/${searchInput.value}`)
@@ -50,6 +49,7 @@ const App = () => {
     user,
     repos,
     fetchRepos,
+    reset
   }
 
   return (
@@ -57,18 +57,11 @@ const App = () => {
       <Header />
       <section className="App-main">
         {unknown ?
-          <div className="four-oh-four">
-            <img src={unknownUser} alt="Yes, this is doge. The unknown user." /> <br />
-            <span>No user with name &quot;{unknown}&quot; was found</span>
-          </div> : null
+          <FourOhFour unknown={unknown} /> : null
         }
         {user ? (
-          <div className="user-presentation">
-            <UserBio user={user} />
-            <UserRepos {...userProps} />
-            <button className="button" onClick={reset}>Reset</button>
-          </div>
-          ) : null
+          <UserPresentation {...userProps} />
+        ) : null
         }
         <SearchForm fetchUser={fetchUser} />
       </section>
