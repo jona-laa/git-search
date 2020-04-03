@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { SearchForm } from './Components/SearchForm/SearchForm'
 import { Header } from './Components/Header/Header'
 import { FourOhFour } from './Components/404/404'
 import { UserPresentation } from './Components/User/UserPresentation'
-import './App.css';
+import './App.css'
 
 const App = () => {
-  const [user, setUser] = useState();
-  const [repos, setRepos] = useState();
-  const [unknown, setUnknown] = useState();
+  const [user, setUser] = useState()
+  const [repos, setRepos] = useState()
+  const [unknown, setUnknown] = useState()
 
   const fetchUser = async () => {
     reset()
@@ -21,7 +21,7 @@ const App = () => {
             setUser(await res.json())
         })
         .catch(err => {
-          console.log(err, 'Oops! Something went wrong!');
+          console.log(err, 'Oops! Something went wrong!')
         })
     }
     searchInput.value = ''
@@ -34,7 +34,7 @@ const App = () => {
           setRepos(await repos.json())
         })
         .catch(err => {
-          console.log(err, 'Oops! Something went wrong!');
+          console.log(err, 'Oops! Something went wrong!')
         })
     }
   }
@@ -66,7 +66,7 @@ const App = () => {
         <SearchForm fetchUser={fetchUser} />
       </section>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

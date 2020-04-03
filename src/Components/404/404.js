@@ -1,6 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import unknownUser from '../../doge.png'
+import './404.css'
 
 export const FourOhFour = ({ unknown }) => {
     return (

@@ -1,7 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import { UserBio } from './UserBio/UserBio'
 import { UserRepos } from './UserRepos/UserRepos'
+import './UserPresentation.css'
 
 export const UserPresentation = (props) => {
     return (
@@ -17,4 +18,4 @@ UserPresentation.propTypes = {
     props: PropTypes.object,
     user: PropTypes.object,
     reset: PropTypes.func
-};
+}

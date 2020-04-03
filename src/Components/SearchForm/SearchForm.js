@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import { SearchButton } from './SearchButton/SearchButton'
 import { SearchInput } from './SearchInput/SearchInput'
-import './SearchForm.css';
+import './SearchForm.css'
 
 export const SearchForm = ({ fetchUser }) => {
 
     const preventReload = (e) => {
-        e.preventDefault();
-    };
+        e.preventDefault()
+    }
 
     return (
         <div className="search-container">
@@ -17,9 +17,9 @@ export const SearchForm = ({ fetchUser }) => {
                 <SearchButton fetchUser={fetchUser} />
             </form>
         </div>
-    );
-};
+    )
+}
 
 SearchForm.propTypes = {
     fetchUser: PropTypes.func,
-};
+}
